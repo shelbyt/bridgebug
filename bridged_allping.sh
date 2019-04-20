@@ -3,8 +3,6 @@
 # Initialize our own variables:
 
 containers=2
-runs=1
-m_id=0
 
 docker kill bbdemo0
 docker kill bbdemo1
@@ -50,21 +48,4 @@ docker cp bbdemo$i:/log_bbdemo$i.dat .
 done
 
 paste -d , log_*.dat
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
