@@ -1,0 +1,17 @@
+To reproduce:
+
+1. Run env_config.sh. 
+This compiles the file and sets the main script as executable
+
+2. Run bridged_allping.sh
+	This creates two debian docker images bbdemo0 and bbdemo1 and connects them
+to a docker bridge. The all-to-all ping binary (allping) takes in an iplist of ips to ping, start time,
+and number of containers to be pinged with a small udp ping/pong message in the payload.
+
+The iplist is generated dynamically and then copied into the container. Both the iplist and the 
+allping binary are copied into the bbdemo containers and the binary is launched at the specified time.
+Each container logs the rtt (in seconds) of its own message  and of other containers. i.e. 2 containers would
+produce 2 timestamps each resulting in 4 time stamps across two log files.  This is printed out at the end of the script. 
+
+If a packet drop happens it will show up as negative when printed. It may take up to 4 runs before the drops start
+to appear.
