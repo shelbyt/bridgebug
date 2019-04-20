@@ -15,3 +15,22 @@ produce 2 timestamps each resulting in 4 time stamps across two log files.  This
 
 If a packet drop happens it will show up as negative when printed. It may take up to 4 runs before the drops start
 to appear.
+
+Reproduced on (Ubuntu):
+
+Docker version 17.05.0-ce, build 89658be
+kernel: 4.4.0-142-generic
+
+Docker version 18.06.3-ce, build d7080c1
+kernel: 4.4.0-142-generic
+
+Docker version 18.06.3-ce, build d7080c1
+kernel:5.0.9-050009-generic
+
+
+
+Testbeds Reproduced on:
+Local machine
+Local machine + Vmware
+EC2
+
