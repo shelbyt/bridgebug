@@ -34,3 +34,39 @@ Local machine
 Local machine + Vmware
 EC2
 
+
+The experiment:
+An all-to-all udp ping between docker containers on the same docker bridge and  same host machine.
+
+The problem:
+Most of the time packets will be lost (exp_1.sh). However, if we re-run the experiment in quick sucession the problem
+usually does not appear again (exp_2.sh) and the packet is not dropped.
+
+
+To reproduce:
+Follow setup above.
+
+Other notes:
+-> If we replace our code with the PING command i.e. replace UDP with ICMP and do an all-to-all then
+drops do not occur.
+-> If we inject a small amount of delay between pings i.e. add 100ms delay between pings then 
+there are no drops 100% of the time (exp_3.sh)
+-> This problem does NOT manifest itself if we start
+several processes and have them message each other through different ports. i.e. avoiding the use of docker.
+
+Measurements:
+Looking at the pcap, the udp packet is sent out of container0 but never arrives in container1.
+
+Findings:
+We monitored kernel drops by enabling the drop_monitor module. We found that the drop occurs in the "nf_hook_slow"
+function. This is the only clue that the packet was dropped somewhere. Monitoring from the host, IPTables, ethtool, and arp do not report any drops.
+
+
+Unlikly Explanations:
+IPTables
+ARP
+Tuning
+
+
+
+
