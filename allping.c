@@ -19,7 +19,7 @@
 
 #define BUSY_WAIT 0 // 0 or 1
 
-#define SEND_DELAY 0.0 // only works when BUSY_WAIT is false
+//#define SEND_DELAY 0.0 // only works when BUSY_WAIT is false
 
 #define ARRAY_SIZE(a) (sizeof(a) / sizeof((a)[0]))
 

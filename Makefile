@@ -1,9 +1,10 @@
 CC=gcc
 
-allping: allping.o
-	$(CC) -o allping allping.o
+nodelay_allping: allping.c
+	$(CC) -DSEND_DELAY=0.0  -o allping  allping.c
 
-all: allping
+delay_allping: allping.c
+	$(CC) -DSEND_DELAY=0.1  -o allping  allping.c
 
 clean:
-	rm *.o allping
+	rm *.o allping iplist
