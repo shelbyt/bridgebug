@@ -13,7 +13,9 @@ Each container logs the rtt (in seconds) of its own message  and of other contai
 produce 2 timestamps each resulting in 4 time stamps across two log files.  This is printed out at the end of the script. 
 
 If a packet drop happens it will show up as negative when printed. It may take up to 4 runs before the drops start
-to appear.
+to appear. See picture below for an example output run with missing packets:
+
+![alt text](https://raw.githubusercontent.com/shelbyt/bridgebug/master/missing.png)
 
 ### Reproducing problem with the scripts:
 Most of the time packets will be lost **(exp_1.sh)**. However, if we re-run the experiment in quick sucession the problem
